@@ -1,0 +1,9 @@
+<h2>Lista de Alumnos</h2>
+<ul>
+    {% for alumno in alumnos %}
+        <li>{{ alumno }}</li>
+    {% empty %}
+        <li>No hay alumnos registrados.</li>
+    {% endfor %}
+</ul>
+<a href="{% url 'crear_alumno' %}">Registrar Alumno</a>
