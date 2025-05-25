@@ -1,0 +1,11 @@
+{% extends "gestion_academica/base.html" %}
+{% block title %}Confirmar Eliminación{% endblock %}
+{% block content %}
+<h1>Confirmar Eliminación de Nota</h1>
+<p>¿Estás seguro de que deseas eliminar la nota de <strong>{{ nota_obj.alumno }}</strong> en el curso <strong>{{ nota_obj.curso }}</strong> (Nota: {{ nota_obj.nota }})?</p>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Sí, Eliminar</button>
+    <a href="{% url 'lista_notas' %}" class="btn btn-secondary">Cancelar</a>
+</form>
+{% endblock %}

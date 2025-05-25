@@ -1,0 +1,15 @@
+{% extends "gestion_academica/base.html" %} 
+
+{% block title %}Ingresar Nota{% endblock %}
+
+{% block content %}
+<h1>Ingresar Nueva Nota</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Guardar Nota</button>
+</form>
+<br>
+<a href="{% url 'lista_notas' %}" class="btn btn-secondary">Ver Todas las Notas</a>
+<a href="{% url 'home' %}" class="btn btn-info">Volver al Inicio</a> 
+{% endblock %}

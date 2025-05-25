@@ -1,0 +1,42 @@
+{% extends "gestion_academica/base.html" %}
+
+{% block title %}Listado de Notas{% endblock %}
+
+{% block content %}
+<h1>Listado de Notas Registradas</h1>
+<a href="{% url 'ingresar_nota' %}" class="btn btn-success mb-3">Ingresar Nueva Nota</a>
+{% if notas %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Alumno</th>
+                <th>Curso</th>
+                <th>Nota</th>
+                <th>Fecha de Registro</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for nota_obj in notas %}
+            <tr>
+                <td>{{ nota_obj.alumno.apellidos }}, {{ nota_obj.alumno.nombres }}</td>
+                <td>{{ nota_obj.curso.nombre_curso }}</td>
+                <td>{{ nota_obj.nota }}</td>
+                <td>{{ nota_obj.fecha_registro|date:"d/m/Y H:i" }}</td>
+                <td>
+                    <a href="{% url 'editar_nota' nota_obj.id %}" class="btn btn-sm btn-warning">Editar</a>
+                    <form action="{% url 'eliminar_nota' nota_obj.id %}" method="post" style="display: inline;" onsubmit="return confirm('¿Estás seguro de que deseas eliminar esta nota?');">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>No hay notas registradas aún.</p>
+{% endif %}
+<br>
+<a href="{% url 'home' %}" class="btn btn-info">Volver al Inicio</a>
+{% endblock %}
