@@ -1,0 +1,19 @@
+{% extends "gestion_academica/base.html" %} 
+
+{% block title %}
+    Inicio - Sistema Académico
+{% endblock %}
+
+{% block content %}
+    <h1>{{ titulo }}</h1>
+    <p>Este es el sistema de gestión de notas, alumnos y cursos.</p>
+    <p>Por favor, selecciona una opción del menú de navegación o usa los siguientes enlaces:</p>
+    <ul>
+        <li><a href="{% url 'lista_alumnos' %}">Ver Listado de Alumnos</a></li>
+        <li><a href="{% url 'lista_cursos' %}">Ver Listado de Cursos</a></li>
+        <li><a href="{% url 'lista_notas' %}">Ver Listado de Notas</a></li>
+        <li><a href="{% url 'crear_alumno' %}">Ingresar Nuevo Alumno</a></li>
+        <li><a href="{% url 'crear_curso' %}">Ingresar Nuevo Curso</a></li>
+        <li><a href="{% url 'ingresar_nota' %}">Ingresar Nueva Nota</a></li>
+    </ul>
+{% endblock %}

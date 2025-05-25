@@ -67,3 +67,11 @@ def eliminar_nota(request, nota_id):
         nota_obj.delete()
         return redirect('lista_notas')
     return render(request, 'gestion_academica/confirmar_eliminar_nota.html', {'nota_obj': nota_obj})
+
+def pagina_inicio(request):
+    context = {
+        'titulo': "Bienvenido al Sistema de Gestión Académica",
+    }
+    return render(request, 'gestion_academica/pagina_inicio.html', context)
+
+
